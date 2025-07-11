@@ -29,32 +29,28 @@ namespace WendingSystem
         }
         class VendingMachine
         {
-            public decimal Ballanse { get; set; }
-            public string Name { get; set; }
-            public decimal Price { get; set; }
-            public int Quantity { get; set; }
+            public decimal Ballance { get; set; }
 
-            
-            public VendingMachine(string name, decimal price, int quantity, decimal ballanse )
+            public VendingMachine(decimal ballance)
             {
-                Name = name;
-                Price = price;
-                Quantity = quantity;
-                Ballanse = ballanse;
+                Ballance = ballance;
             }
+
             public void DisplayProducts(string name, decimal price, int quantity)
             {
                 
             }
         
 
-            public void BuyProduct(string name, decimal price, int quantity)
+            public void BuyProduct()
             {
-                Console.WriteLine("выберите из списка интересующие вас товары: ");
-                string name1 = Console.ReadLine();
+                Console.WriteLine("ваш список продуктов выглядит так: " + "\n " + "\n напишите yes, если хотите переидти к оплате или no если хотите править список!");
+                string opiration = Console.ReadLine();
 
-                Console.WriteLine("выберите кол-во: ");
-                int quantity1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("к оплате: " + " " + "руб" + "\nваш баланс составляет: " + " " + "руб" + "\nсовершить операцию? yes/no");
+
+                Console.WriteLine("покупка совершена успешно! " + "\nхотите совершить следующую покупку? " + "\n yes/no ");
+                string opiration1 = Console.ReadLine();
             }
             public void InsertMoney()
             {
