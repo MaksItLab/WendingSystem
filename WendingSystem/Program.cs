@@ -13,14 +13,14 @@ namespace WendingSystem
             //Product product = new Product();
             VendingMachine vendingmachine = new VendingMachine(10000 );
             List<string> Spisok1 = new List<string>() ;
-            Spisok1.AddRange(vendingmachine.Spisok);
+           
 
 
 
 
         }
 
-        class Product 
+        public class Product 
         {
             public string Name { get; set; }
             public decimal Price { get; set; }
@@ -37,12 +37,12 @@ namespace WendingSystem
         public class VendingMachine
         {
             public decimal Ballance { get; set; }
-            public List<string> Spisok = new List<string>() {"яблоко ", "апельсин ", "авокадо ", "груша ", "ананас " };
+            public List<Product> Spisok;
             //"яблоко ", "апельсин ", "авокадо ", "груша ", "ананас "
             public VendingMachine(decimal ballance)
             {
                 Ballance = ballance;
-                
+                Spisok = new List<Product>() ;
             }
 
             public void DisplayProducts() 
