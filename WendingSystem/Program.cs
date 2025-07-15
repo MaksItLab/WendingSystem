@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,20 @@ namespace WendingSystem
     {
         static void Main(string[] args)
         {
-            //Product product = new Product();
-            VendingMachine vendingmachine = new VendingMachine(10000 );
-            List<string> Spisok1 = new List<string>() ;
-           
+
+            VendingMachine vendingmachine = new VendingMachine(10000);
+           // Product product = new Product();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,11 +53,18 @@ namespace WendingSystem
             public VendingMachine(decimal ballance)
             {
                 Ballance = ballance;
-                Spisok = new List<Product>() ;
+                Spisok = new List<Product>()
+                {
+                    new Product("apple", 154, 55),
+                    new Product("lime", 111, 35),
+                    new Product("avocado", 254, 11),
+                    new Product("bred", 54, 132)
+                };
             }
-
+            
             public void DisplayProducts() 
             {
+                
                 for (int i = 0; i < Spisok.Count; i++)
                 {
                     Console.WriteLine(Spisok[i]);
