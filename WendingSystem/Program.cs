@@ -64,11 +64,11 @@ namespace WendingSystem
             
             public void DisplayProducts() 
             {
-                int element = 0;
+                
                 for (int i = 0; i < Spisok.Count; i++)
                 {
-                    element++;
-                    Console.WriteLine("товар номер:" + (element - 1) + ". " + Spisok[i].Name + ". " +  "цена: " + Spisok[i].Price + "руб. " + "кол-во в наличии: " + Spisok[i].Quantity);
+                    
+                    Console.WriteLine("товар номер:" + i + ". " + Spisok[i].Name + ". " +  "цена: " + Spisok[i].Price + "руб. " + "кол-во в наличии: " + Spisok[i].Quantity);
                 }
             }
         
