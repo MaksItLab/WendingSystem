@@ -12,9 +12,9 @@ namespace WendingSystem
         static void Main(string[] args)
         {
 
-            VendingMachine vendingmachine = new VendingMachine(10000);
-           // Product product = new Product();
-
+            VendingMachine vendingmachine = new VendingMachine();
+            // Product product = new Product();
+            vendingmachine.DisplayProducts();
 
 
 
@@ -47,12 +47,12 @@ namespace WendingSystem
         }
         public class VendingMachine
         {
-            public decimal Ballance { get; set; }
+            public decimal Balance { get; set; } = 0;
             public List<Product> Spisok;
             //"яблоко ", "апельсин ", "авокадо ", "груша ", "ананас "
-            public VendingMachine(decimal ballance)
+            public VendingMachine()
             {
-                Ballance = ballance;
+                
                 Spisok = new List<Product>()
                 {
                     new Product("apple", 154, 55),
@@ -64,10 +64,11 @@ namespace WendingSystem
             
             public void DisplayProducts() 
             {
-                
+                int element = 0;
                 for (int i = 0; i < Spisok.Count; i++)
                 {
-                    Console.WriteLine(Spisok[i]);
+                    element++;
+                    Console.WriteLine("товар номер:" + (element - 1) + ". " + Spisok[i].Name + ". " +  "цена: " + Spisok[i].Price + "руб. " + "кол-во в наличии: " + Spisok[i].Quantity);
                 }
             }
         
