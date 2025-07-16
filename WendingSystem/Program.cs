@@ -14,7 +14,8 @@ namespace WendingSystem
 
             VendingMachine vendingmachine = new VendingMachine();
             // Product product = new Product();
-            vendingmachine.InsertMoney();
+            
+            vendingmachine.InsertMoney(5000);
             vendingmachine.DisplayProducts();
             vendingmachine.BuyProduct();
             vendingmachine.ReturnChange();
@@ -117,30 +118,29 @@ namespace WendingSystem
                     return;
                 }
             }
-            public void InsertMoney()
+            public void InsertMoney(decimal element)
             {
                 
-                Console.WriteLine("введите сумму которую вы хотите положить на счет: ");
-                decimal element = int.Parse(Console.ReadLine());
-                int j = 0;
+              
+               
                 if (element > 0)
                 {
-                    Balance = element + j;
+                    Balance = element;
                     Console.WriteLine("сумма успешно внесена!" + "\nваш баланс составляет: " + Balance);
 
                 }
                 else 
                 {
                     Console.WriteLine("введена некорректная сумма!");
-                    return;
+                    
                 }
             }
             public void ReturnChange()
             {
                 decimal element5 = Balance;
-                int j = 0;
+                
                 Balance = 0;
-                Console.WriteLine("ващ итоговый балланс составляет: " + (Balance = element5 - j));
+                Console.WriteLine("по итогу на ваш счет возваращено: " + element5 + "руб.");
 
             }
         }
