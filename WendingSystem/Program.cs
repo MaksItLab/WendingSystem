@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WendingSystem
 {
@@ -137,10 +138,10 @@ namespace WendingSystem
             }
             public void ReturnChange()
             {
-                decimal element5 = Balance;
-                
+
+                Console.WriteLine("по итогу на ваш счет возваращено: " + Balance + "руб.");
                 Balance = 0;
-                Console.WriteLine("по итогу на ваш счет возваращено: " + element5 + "руб.");
+                
 
             }
         }
