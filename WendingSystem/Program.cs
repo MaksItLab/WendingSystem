@@ -126,8 +126,8 @@ namespace WendingSystem
                
                 if (balance > 0)
                 {
-                                      
-                    Console.WriteLine("сумма успешно внесена!" + "\nваш баланс составляет: " + (Balance = Balance + balance));
+                    Balance = Balance + balance;
+                    Console.WriteLine("сумма успешно внесена!" + "\nваш баланс составляет: " + Balance );
 
                 }
                 else 
