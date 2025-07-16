@@ -17,7 +17,7 @@ namespace WendingSystem
             vendingmachine.InsertMoney();
             vendingmachine.DisplayProducts();
             vendingmachine.BuyProduct();
-
+            vendingmachine.ReturnChange();
 
 
 
@@ -98,7 +98,7 @@ namespace WendingSystem
                             {
                                 Balance = element3 - Spisok[i].Price;
                                 Spisok[i].Quantity--;
-                                Console.WriteLine("товар успешно приобретен! " + "\nваш балланс составляет: " + Balance);
+                                Console.WriteLine("товар успешно приобретен! " );
                                 return;
                             }
                             else
@@ -137,6 +137,10 @@ namespace WendingSystem
             }
             public void ReturnChange()
             {
+                decimal element5 = Balance;
+                int j = 0;
+                Balance = 0;
+                Console.WriteLine("ващ итоговый балланс составляет: " + (Balance = element5 - j));
 
             }
         }
