@@ -15,6 +15,8 @@ namespace WendingSystem
             VendingMachine vendingmachine = new VendingMachine();
             // Product product = new Product();
             vendingmachine.InsertMoney();
+            vendingmachine.DisplayProducts();
+            vendingmachine.BuyProduct();
 
 
 
@@ -77,11 +79,43 @@ namespace WendingSystem
             {
                 Console.WriteLine("введите номер товара!");
                 int element1 = int.Parse(Console.ReadLine());
+                decimal element3 = Balance;
                 if (element1 <= 3 && element1 >= 0) 
-                { 
+                {
+                    for (int i = element1; i < Spisok.Count; )
+                    {
+                        Console.WriteLine("выбран товар: " + Spisok[i].Name + "\nцена составит: " + Spisok[i].Price + "\nв наличии имеется: " + Spisok[i].Quantity);
+                        if (Spisok[i].Quantity <= 0 || Balance < Spisok[i].Price)
+                        {
+                            Console.WriteLine("недостаточно средств или товара нет в наличии, просьба ознакомиться с описанием товара!");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("вы действительно хотите приобрести этот товар! " + "\nyes/no");
+                            string element4 = Console.ReadLine();
+                            if (element4 == "yes") 
+                            {
+                                Balance = element3 - Spisok[i].Price;
+                                Spisok[i].Quantity--;
+                                Console.WriteLine("товар успешно приобретен! " + "\nваш балланс составляет: " + Balance);
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine("операция отменена по причине отказа или ввода некорректного значения!");
+                                return ;
+                            }
+                        }
 
+                    }
+                    
                 }
-
+                else
+                {
+                    Console.WriteLine("введен некорректный номер!");
+                    return;
+                }
             }
             public void InsertMoney()
             {
