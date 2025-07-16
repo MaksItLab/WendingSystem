@@ -141,8 +141,9 @@ namespace WendingSystem
             {
 
                 Console.WriteLine("по итогу на ваш счет возваращено: " + Balance + "руб.");
-                
-                
+                Balance = 0;
+
+
 
             }
         }
