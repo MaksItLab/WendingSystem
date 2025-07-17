@@ -12,24 +12,12 @@ namespace WendingSystem
     {
         static void Main(string[] args)
         {
-            VendingMachine vendingmachine = new VendingMachine();
-            /*
-            vendingmachine.InsertMoney(254);
-            vendingmachine.DisplayProducts();
-            Console.WriteLine("введите номер товара!");
-            vendingmachine.BuyProduct(2);
-            vendingmachine.ReturnChange();
-            vendingmachine.InsertMoney(500);
-            */
+            VendingMachine vendingmachine = new VendingMachine();            
             while (true) 
             {
                 Console.WriteLine("здравствуйте, выберите операцию: \n1.InsertMoney \n2.DisplayProducts \n3.BuyProduct \n4.ReturnChange \n5.завершить работу.");
                 string number = Console.ReadLine();
-                if (number != "1" && number != "2" && number != "3" && number != "4" && number != "5")
-                {
-                    Console.WriteLine("введен некорректный номер, повторите попытку!");
-                    
-                }
+                
                 switch (number)
                 {
                     case "1":
@@ -49,13 +37,12 @@ namespace WendingSystem
                     case "5":
                         Console.WriteLine("программа успешно завершила работу!");
                         return;
+                    default:
+                        Console.WriteLine("введен некорректный номер, повторите попытку!");
+                        break;
+
                 }
             }
-
-
-
-
-
         }
 
         public class Product 
