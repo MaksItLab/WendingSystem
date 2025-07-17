@@ -13,12 +13,49 @@ namespace WendingSystem
         static void Main(string[] args)
         {
             VendingMachine vendingmachine = new VendingMachine();
+            /*
             vendingmachine.InsertMoney(254);
             vendingmachine.DisplayProducts();
             Console.WriteLine("введите номер товара!");
             vendingmachine.BuyProduct(2);
             vendingmachine.ReturnChange();
             vendingmachine.InsertMoney(500);
+            */
+            while (true) 
+            {
+                Console.WriteLine("здравствуйте, выберите операцию: \n1.InsertMoney \n2.DisplayProducts \n3.BuyProduct \n4.ReturnChange \n5.завершить работу.");
+                string number = Console.ReadLine();
+                if (number != "1" && number != "2" && number != "3" && number != "4" && number != "5")
+                {
+                    Console.WriteLine("введен некорректный номер, повторите попытку!");
+                    
+                }
+                switch (number)
+                {
+                    case "1":
+                        Console.WriteLine("введите сумму для пополнения: ");
+                        vendingmachine.InsertMoney(decimal.Parse(Console.ReadLine()));
+                        break;
+                    case "2":
+                        vendingmachine.DisplayProducts();
+                        break;
+                    case "3":
+                        Console.WriteLine("выберите продукт для покупки по его номеру: ");
+                        vendingmachine.BuyProduct(int.Parse(Console.ReadLine()));
+                        break;
+                    case "4":
+                        vendingmachine.ReturnChange();
+                        break;
+                    case "5":
+                        Console.WriteLine("программа успешно завершила работу!");
+                        return;
+                }
+            }
+
+
+
+
+
         }
 
         public class Product 
