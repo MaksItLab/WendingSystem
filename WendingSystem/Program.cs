@@ -12,27 +12,13 @@ namespace WendingSystem
     {
         static void Main(string[] args)
         {
-
             VendingMachine vendingmachine = new VendingMachine();
-            // Product product = new Product();
-            
             vendingmachine.InsertMoney(254);
             vendingmachine.DisplayProducts();
-            vendingmachine.BuyProduct();
+            Console.WriteLine("введите номер товара!");
+            vendingmachine.BuyProduct(2);
             vendingmachine.ReturnChange();
             vendingmachine.InsertMoney(500);
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         public class Product 
@@ -47,8 +33,8 @@ namespace WendingSystem
                 Price = price;
                 Quantity = quantity;
             }
-           
         }
+
         public class VendingMachine
         {
             public decimal Balance { get; set; } = 0;
@@ -56,7 +42,6 @@ namespace WendingSystem
             //"яблоко ", "апельсин ", "авокадо ", "груша ", "ананас "
             public VendingMachine()
             {
-                
                 Spisok = new List<Product>()
                 {
                     new Product("apple", 154, 55),
@@ -68,82 +53,60 @@ namespace WendingSystem
             
             public void DisplayProducts() 
             {
-                
                 for (int i = 0; i < Spisok.Count; i++)
                 {
-                    
                     Console.WriteLine("товар номер:" + i + ". " + Spisok[i].Name + ". " +  "цена: " + Spisok[i].Price + "руб. " + "кол-во в наличии: " + Spisok[i].Quantity);
                 }
             }
         
-
-            public void BuyProduct()
+            public void BuyProduct(int CodeOfProduct)
             {
-                Console.WriteLine("введите номер товара!");
-                int element1 = int.Parse(Console.ReadLine());
-                decimal element3 = Balance;
-                if (element1 <= 3 && element1 >= 0) 
+                if (CodeOfProduct <= Spisok.Count - 1 && CodeOfProduct >= 0) 
                 {
-                    for (int i = element1; i < Spisok.Count; )
-                    {
-                        Console.WriteLine("выбран товар: " + Spisok[i].Name + "\nцена составит: " + Spisok[i].Price + "\nв наличии имеется: " + Spisok[i].Quantity);
-                        if (Spisok[i].Quantity <= 0 || Balance < Spisok[i].Price)
+                        Console.WriteLine("выбран товар: " + Spisok[CodeOfProduct].Name + "\nцена составит: " + Spisok[CodeOfProduct].Price);
+                        if (Spisok[CodeOfProduct].Quantity <= 0 || Balance < Spisok[CodeOfProduct].Price)
                         {
                             Console.WriteLine("недостаточно средств или товара нет в наличии, просьба ознакомиться с описанием товара!");
-                            return;
                         }
                         else
                         {
-                            Console.WriteLine("вы действительно хотите приобрести этот товар! " + "\nyes/no");
-                            string element4 = Console.ReadLine();
-                            if (element4 == "yes") 
+                            Console.WriteLine("вы действительно хотите приобрести этот товар!\nyes/no");
+                            string choice = Console.ReadLine();
+                            if (choice == "yes") 
                             {
-                                Balance = element3 - Spisok[i].Price;
-                                Spisok[i].Quantity--;
+                                Balance = Balance - Spisok[CodeOfProduct].Price;
+                                Spisok[CodeOfProduct].Quantity--;
                                 Console.WriteLine("товар успешно приобретен! " );
-                                return;
                             }
                             else
                             {
-                                Console.WriteLine("операция отменена по причине отказа или ввода некорректного значения!");
-                                return ;
+                                Console.WriteLine("операция отменена по причине отказа или ввода некорректного значения!"); 
                             }
                         }
-
-                    }
-                    
                 }
                 else
                 {
                     Console.WriteLine("введен некорректный номер!");
-                    return;
                 }
             }
+
             public void InsertMoney(decimal balance)
             {
-                
-              
-               
                 if (balance > 0)
                 {
                     Balance = Balance + balance;
                     Console.WriteLine("сумма успешно внесена!" + "\nваш баланс составляет: " + Balance );
-
                 }
                 else 
                 {
                     Console.WriteLine("введена некорректная сумма!");
-                    
                 }
             }
+
             public void ReturnChange()
             {
-
                 Console.WriteLine("по итогу на ваш счет возваращено: " + Balance + "руб.");
                 Balance = 0;
-
-
-
             }
         }
     }
